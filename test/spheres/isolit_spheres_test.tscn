@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://trko8tuph3v7"]
+
+[ext_resource type="Script" uid="uid://dtbtq2iowg33y" path="res://addons/isolit/nodes/iso_canvas_modulate.gd" id="1_modulate"]
+[ext_resource type="Script" uid="uid://cpa2qb3trjq4k" path="res://addons/isolit/nodes/iso_point_light.gd" id="2_light"]
+[ext_resource type="Script" uid="uid://nlnhvpdmxpnh" path="res://addons/isolit/nodes/iso_node.gd" id="3_isonode"]
+[ext_resource type="Texture2D" uid="uid://bk0yrgjpx51ul" path="res://test/spheres/test_assets/sectioned_sphere.png" id="4_sphere"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sphere"]
+diffuse_texture = ExtResource("4_sphere")
+normal_texture = ExtResource("4_sphere")
+
+[node name="IsolitSpheresTest" type="Node2D" unique_id=2060967635]
+
+[node name="IsoCanvasModulate" type="Node2D" parent="." unique_id=1967163353]
+script = ExtResource("1_modulate")
+color = Color(0.1, 0.1, 0.1, 1)
+metadata/_custom_type_script = "uid://dtbtq2iowg33y"
+
+[node name="IsoPointLight" type="Node2D" parent="." unique_id=1283507803]
+position = Vector2(462, -164)
+script = ExtResource("2_light")
+world_position = Vector3(0.59210825, -0.3950712, 0.2)
+range = 2.0
+energy = 1.5
+metadata/_custom_type_script = "uid://cpa2qb3trjq4k"
+
+[node name="IsoNode" type="Node2D" parent="." unique_id=1398792643]
+script = ExtResource("3_isonode")
+surface_type = 4
+metadata/_custom_type_script = "uid://nlnhvpdmxpnh"
+
+[node name="Sphere0" type="Sprite2D" parent="IsoNode" unique_id=1265061073]
+use_parent_material = true
+position = Vector2(0, -640)
+texture = SubResource("CanvasTexture_sphere")
+
+[node name="Sphere1" type="Sprite2D" parent="IsoNode" unique_id=1574050723]
+use_parent_material = true
+position = Vector2(0, -320)
+texture = SubResource("CanvasTexture_sphere")
+
+[node name="Sphere2" type="Sprite2D" parent="IsoNode" unique_id=645727624]
+use_parent_material = true
+texture = SubResource("CanvasTexture_sphere")
+
+[node name="Sphere3" type="Sprite2D" parent="IsoNode" unique_id=712635406]
+use_parent_material = true
+position = Vector2(0, 320)
+texture = SubResource("CanvasTexture_sphere")
+
+[node name="Sphere4" type="Sprite2D" parent="IsoNode" unique_id=1004310813]
+use_parent_material = true
+position = Vector2(0, 640)
+texture = SubResource("CanvasTexture_sphere")

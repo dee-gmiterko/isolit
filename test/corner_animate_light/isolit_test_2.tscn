@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://cneg8mf102kah"]
+
+[ext_resource type="Script" uid="uid://dtbtq2iowg33y" path="res://addons/isolit/nodes/iso_canvas_modulate.gd" id="1_n7i70"]
+[ext_resource type="Script" uid="uid://cpa2qb3trjq4k" path="res://addons/isolit/nodes/iso_point_light.gd" id="2_8p7sy"]
+[ext_resource type="Script" uid="uid://nlnhvpdmxpnh" path="res://addons/isolit/nodes/iso_node.gd" id="3_fn8do"]
+[ext_resource type="Texture2D" uid="uid://ciiim6ttcx5ww" path="res://test/dungeon/test_assets/120_r_wall_dirt_0.png" id="4_io0nn"]
+[ext_resource type="Texture2D" uid="uid://0ewocsy8kwp0" path="res://test/dungeon/test_assets/110_floor_dirt_0.png" id="4_xnfr4"]
+[ext_resource type="Texture2D" uid="uid://bevn57ajhnqlr" path="res://test/dungeon/test_assets/120_r_wall_dirt_0_nm.png" id="5_duyto"]
+[ext_resource type="Texture2D" uid="uid://b0vphkl8egrj3" path="res://test/dungeon/test_assets/130_l_wall_dirt_0.png" id="6_wo6cr"]
+[ext_resource type="Texture2D" uid="uid://b5eiggr1aww84" path="res://test/dungeon/test_assets/130_l_wall_dirt_0_nm.png" id="7_o4isg"]
+[ext_resource type="Texture2D" uid="uid://bkcfmcewc8y74" path="res://test/dungeon/test_assets/110_floor_dirt_0_nm.png" id="9_5a6t8"]
+
+[sub_resource type="Animation" id="Animation_t3bbs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IsoPointLight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.99999297, -492)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IsoPointLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.7]
+}
+
+[sub_resource type="Animation" id="Animation_ugpbf"]
+resource_name = "litmove"
+length = 1.3666667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IsoPointLight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.23333333, 0.33333334, 0.4666667, 0.6333333, 0.76666665, 0.8666667, 0.9666667, 1.0666667, 1.2, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.99999297, -492), Vector2(28.99999, -518), Vector2(2.9999998, -533), Vector2(-19.999998, -521), Vector2(17, -506), Vector2(-14, -481), Vector2(1.9999999, -485), Vector2(-15.000006, -461), Vector2(-1, -494), Vector2(0, -459), Vector2(-31, -470), Vector2(0.99999297, -492)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IsoPointLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.23333333, 0.36666667, 0.4666667, 0.6333333, 0.73333335, 0.8666667, 0.9666667, 1.0666667, 1.1666666, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.7, 1.47, 1.5779999999999998, 1.433, 1.7, 1.48, 1.683, 1.412, 1.671, 1.397, 1.486, 1.7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xj5t6"]
+_data = {
+&"RESET": SubResource("Animation_t3bbs"),
+&"litmove": SubResource("Animation_ugpbf")
+}
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_io0nn"]
+diffuse_texture = ExtResource("4_io0nn")
+normal_texture = ExtResource("5_duyto")
+specular_color = Color(0, 0, 0, 1)
+specular_shininess = 0.65
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wo6cr"]
+diffuse_texture = ExtResource("6_wo6cr")
+normal_texture = ExtResource("7_o4isg")
+specular_color = Color(0, 0, 0, 1)
+specular_shininess = 0.65
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_duyto"]
+diffuse_texture = ExtResource("4_xnfr4")
+normal_texture = ExtResource("9_5a6t8")
+specular_color = Color(0, 0, 0, 1)
+specular_shininess = 0.65
+
+[node name="IsolitTest2" type="Node2D" unique_id=1261657627]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=701008885]
+libraries/ = SubResource("AnimationLibrary_xj5t6")
+
+[node name="IsoCanvasModulate" type="Node2D" parent="." unique_id=1126301882]
+script = ExtResource("1_n7i70")
+color = Color(0.44691664, 0.49973837, 1.1291975, 1)
+ambient_energy = 1.1
+metadata/_custom_type_script = "uid://dtbtq2iowg33y"
+
+[node name="IsoPointLight" type="Node2D" parent="." unique_id=1555428142]
+position = Vector2(0.99999297, -492)
+script = ExtResource("2_8p7sy")
+world_position = Vector3(0.2841008, 0.2521118, 0.6)
+range = 1.2
+falloff = 0.5
+color = Color(1.353256, 1.1909814, 0.4057815, 1)
+energy = 1.7
+metadata/_custom_type_script = "uid://cpa2qb3trjq4k"
+
+[node name="wallr" type="Node2D" parent="." unique_id=1626757149]
+script = ExtResource("3_fn8do")
+surface_type = 3
+metadata/_custom_type_script = "uid://nlnhvpdmxpnh"
+
+[node name="Sprite2D" type="Sprite2D" parent="wallr" unique_id=1151112574]
+use_parent_material = true
+texture = SubResource("CanvasTexture_io0nn")
+
+[node name="walll" type="Node2D" parent="." unique_id=209155165]
+script = ExtResource("3_fn8do")
+surface_type = 2
+metadata/_custom_type_script = "uid://nlnhvpdmxpnh"
+
+[node name="Sprite2D" type="Sprite2D" parent="walll" unique_id=1314878974]
+use_parent_material = true
+texture = SubResource("CanvasTexture_wo6cr")
+
+[node name="Floor" type="Node2D" parent="." unique_id=769260975]
+script = ExtResource("3_fn8do")
+surface_type = 1
+metadata/_custom_type_script = "uid://nlnhvpdmxpnh"
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=1688293534]
+use_parent_material = true
+texture = SubResource("CanvasTexture_duyto")
