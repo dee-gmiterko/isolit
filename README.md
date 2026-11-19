@@ -38,3 +38,9 @@ Everything updates live in the editor.
 
 Game code tells each light which tiles around it are blocked through
 `update_obstructed`.
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).
